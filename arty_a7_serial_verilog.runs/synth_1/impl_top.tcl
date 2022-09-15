@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/derry/project_serial_second/project_serial_second.runs/synth_1/impl_top.tcl"
+  variable script "/home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.runs/synth_1/impl_top.tcl"
   variable category "vivado_synth"
 }
 
@@ -78,20 +78,20 @@ create_project -in_memory -part xc7a100tcsg324-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir /home/derry/project_serial_second/project_serial_second.cache/wt [current_project]
-set_property parent.project_path /home/derry/project_serial_second/project_serial_second.xpr [current_project]
+set_property webtalk.parent_dir /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.cache/wt [current_project]
+set_property parent.project_path /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part_repo_paths {/home/derry/.Xilinx/Vivado/2021.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:arty-a7-100:part0:1.0 [current_project]
-set_property ip_output_repo /home/derry/project_serial_second/project_serial_second.cache/ip [current_project]
+set_property ip_output_repo /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  /home/derry/project_serial_second/project_serial_second.srcs/sources_1/imports/rtl/uart_rx.v
-  /home/derry/project_serial_second/project_serial_second.srcs/sources_1/imports/rtl/uart_tx.v
-  /home/derry/project_serial_second/project_serial_second.srcs/sources_1/imports/rtl/impl_top.v
+  /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.srcs/sources_1/imports/rtl/uart_rx.v
+  /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.srcs/sources_1/imports/rtl/uart_tx.v
+  /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.srcs/sources_1/imports/rtl/impl_top.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -102,12 +102,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/derry/project_serial_second/project_serial_second.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-100-Master.xdc
-set_property used_in_implementation false [get_files /home/derry/project_serial_second/project_serial_second.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-100-Master.xdc]
+read_xdc /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-100-Master.xdc
+set_property used_in_implementation false [get_files /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-100-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental /home/derry/project_serial_second/project_serial_second.srcs/utils_1/imports/synth_1/impl_top.dcp
+read_checkpoint -auto_incremental -incremental /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.srcs/utils_1/imports/synth_1/impl_top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

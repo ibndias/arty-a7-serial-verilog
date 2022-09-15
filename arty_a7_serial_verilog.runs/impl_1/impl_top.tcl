@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "/home/derry/project_serial_second/project_serial_second.runs/impl_1/impl_top.tcl"
+  variable script "/home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.runs/impl_1/impl_top.tcl"
   variable category "vivado_impl"
 }
 
@@ -132,15 +132,15 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir /home/derry/project_serial_second/project_serial_second.cache/wt [current_project]
-  set_property parent.project_path /home/derry/project_serial_second/project_serial_second.xpr [current_project]
-  set_property ip_output_repo /home/derry/project_serial_second/project_serial_second.cache/ip [current_project]
+  set_property webtalk.parent_dir /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.cache/wt [current_project]
+  set_property parent.project_path /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.xpr [current_project]
+  set_property ip_output_repo /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet /home/derry/project_serial_second/project_serial_second.runs/synth_1/impl_top.dcp
+  add_files -quiet /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.runs/synth_1/impl_top.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc /home/derry/project_serial_second/project_serial_second.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-100-Master.xdc
+  read_xdc /home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.srcs/constrs_1/imports/digilent-xdc-master/Arty-A7-100-Master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

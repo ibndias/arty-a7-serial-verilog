@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/derry/project_serial_second/project_serial_second.runs/impl_1'
+HD_PWD='/home/derry/arty_a7_serial_verilog/arty_a7_serial_verilog.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

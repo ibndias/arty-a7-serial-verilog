@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.2 (lin64) Build 3367213 Tue Oct 19 02:47:39 MDT 2021
-| Date         : Wed Sep 14 10:26:33 2022
+| Date         : Thu Sep 15 09:39:44 2022
 | Host         : 10700k running 64-bit Pop!_OS 22.04 LTS
 | Command      : report_control_sets -verbose -file impl_top_control_sets_placed.rpt
 | Design       : impl_top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     0 |
-|    Minimum number of control sets                        |     0 |
+| Total control sets                                       |    10 |
+|    Minimum number of control sets                        |    10 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |     0 |
+| Unused register locations in slices containing registers |    18 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,14 +39,14 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     0 |
-| >= 0 to < 4        |     0 |
-| >= 4 to < 6        |     0 |
-| >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     0 |
+| Total control sets |    10 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     4 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
-| >= 14 to < 16      |     0 |
+| >= 14 to < 16      |     2 |
 | >= 16              |     0 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
@@ -60,18 +60,29 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |               0 |            0 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |               0 |            0 |
+| No           | Yes                   | No                     |               8 |            3 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               0 |            0 |
+| Yes          | Yes                   | No                     |              70 |           25 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+--------------+---------------+------------------+------------------+----------------+--------------+
-| Clock Signal | Enable Signal | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+--------------+---------------+------------------+------------------+----------------+--------------+
++----------------+-----------------------------------+---------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |           Enable Signal           |            Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+-----------------------------------+---------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | i_uart_tx/txd_reg_i_2_n_0         | i_uart_tx/txd_reg_i_1_n_0             |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | i_uart_rx/next_bit                | i_uart_rx/bit_counter[3]_i_1__0_n_0   |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | i_uart_tx/bit_counter[3]_i_2_n_0  | i_uart_tx/bit_counter[3]_i_1_n_0      |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | i_uart_tx/data_to_send[6]_i_1_n_0 | i_uart_rx/SR[0]                       |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG |                                   | i_uart_rx/SR[0]                       |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | i_uart_rx/recieved_data0          | i_uart_rx/recieved_data[7]_i_1_n_0    |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | i_uart_rx/uart_rx_data[7]_i_1_n_0 | i_uart_rx/SR[0]                       |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | i_uart_rx/E[0]                    | i_uart_rx/SR[0]                       |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | i_uart_tx/txd_reg_i_2_n_0         | i_uart_tx/cycle_counter[0]_i_1__0_n_0 |                4 |             15 |         3.75 |
+|  clk_IBUF_BUFG | i_uart_rx/cycle_counter0          | i_uart_rx/cycle_counter[0]_i_1_n_0    |                4 |             15 |         3.75 |
++----------------+-----------------------------------+---------------------------------------+------------------+----------------+--------------+
 
 
